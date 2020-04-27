@@ -15,9 +15,12 @@
  使用runtime实现Hook所有按钮的点击事件
  */
 + (void)load {
-    Method rawM = class_getInstanceMethod(self, @selector(sendAction:to:forEvent:));
-    Method newM = class_getInstanceMethod(self, @selector(sz_sendAction:to:forEvent:));
-    method_exchangeImplementations(rawM, newM);
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        Method rawM = class_getInstanceMethod(self, @selector(sendAction:to:forEvent:));
+        Method newM = class_getInstanceMethod(self, @selector(sz_sendAction:to:forEvent:));
+        method_exchangeImplementations(rawM, newM);
+    });
 }
 
 - (void)sz_sendAction:(SEL)action to:(id)target forEvent:(UIEvent *)event {

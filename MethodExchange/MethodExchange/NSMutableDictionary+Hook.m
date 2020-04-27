@@ -15,12 +15,15 @@
 使用runtime实现Hook向可变字典中添加元素时自动进行key的非空检测(也可以实现key、value都检测)
 */
 + (void)load {
-    // NSString、NSArray、NSMutableArray、NSMutableDictionary等都是类簇,所以自身的类型并不是self
-    // 这里需要使用它们自身的本质类型才可以获取到对应方法
-    Class cls = NSClassFromString(@"__NSDictionaryM");
-    Method rawM = class_getInstanceMethod(cls, @selector(setObject:forKeyedSubscript:));
-    Method newM = class_getInstanceMethod(cls, @selector(sz_setObject:forKeyedSubscript:));
-    method_exchangeImplementations(rawM, newM);
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{    
+        // NSString、NSArray、NSMutableArray、NSMutableDictionary等都是类簇,所以自身的类型并不是self
+        // 这里需要使用它们自身的本质类型才可以获取到对应方法
+        Class cls = NSClassFromString(@"__NSDictionaryM");
+        Method rawM = class_getInstanceMethod(cls, @selector(setObject:forKeyedSubscript:));
+        Method newM = class_getInstanceMethod(cls, @selector(sz_setObject:forKeyedSubscript:));
+        method_exchangeImplementations(rawM, newM);
+    });
 }
 
 - (void)sz_setObject:(id)obj forKeyedSubscript:(id<NSCopying>)key {
