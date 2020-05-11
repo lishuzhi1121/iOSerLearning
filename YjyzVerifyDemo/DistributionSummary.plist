@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>YjyzVerifyDemo.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>armv7</string>
+				<string>arm64</string>
+			</array>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>DB142DF2F8DA067EE3D4F2424D8AB5AFD9DE46D7</string>
+				<key>dateExpires</key>
+				<string>2023/2/8</string>
+				<key>type</key>
+				<string>iOS Distribution</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>LW5266U92D.com.yz.ksyz.demo</string>
+				<key>com.apple.developer.team-identifier</key>
+				<string>LW5266U92D</string>
+				<key>get-task-allow</key>
+				<false/>
+				<key>keychain-access-groups</key>
+				<array>
+					<string>LW5266U92D.com.yz.ksyz.demo</string>
+				</array>
+			</dict>
+			<key>name</key>
+			<string>一键验证.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>c3b202d2-4b2a-42cb-aed0-2bb4ea6200b2</string>
+				<key>name</key>
+				<string>ksyz_dis</string>
+			</dict>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>LW5266U92D</string>
+				<key>name</key>
+				<string>Guangzhou ZhangTao Network Technology Co., Ltd.</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
